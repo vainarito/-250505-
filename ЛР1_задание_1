@@ -1,0 +1,62 @@
+// добавление библиотек 
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+	// добавление точек(a , b, c), их координат( x1, y1, x2, y2, x3, y3) и периметра теугольника (р)
+	double a, b, c, p;
+	int x1, x2, x3, y1, y2, y3;
+
+	// ввод координат точек с клавиатуры 
+	
+	printf("Enter value (x1):");
+	while (!scanf_s("%d", &x1)) {
+		printf("Enter value (x1):");
+		rewind(stdin);
+		}
+
+	printf("Enter value (y1):");
+	while (!scanf_s("%d", &y1)) {
+		printf("Enter value (y1):");
+		rewind(stdin);
+	}
+
+	printf("Enter value (x2):");
+	while (!scanf_s("%d", &x2)) {
+		printf("Enter value (x2):");
+		rewind(stdin);
+	}
+
+	printf("Enter value (y2):");
+	while (!scanf_s("%d", &y2)) {
+		printf("Enter value (y2):");
+		rewind(stdin);
+	}
+
+	printf("Enter value (x3):");
+	while (!scanf_s("%d", &x3)) {
+		printf("Enter value (x3):");
+		rewind(stdin);
+	}
+
+	printf("Enter value (y3):");
+	while (!scanf_s("%d", &y3)) {
+		printf("Enter value (y3):");
+		rewind(stdin);
+	}
+	
+	//нахожение длин сторон треугольника 
+	a = sqrt(pow(x2 - x1, 2) + pow(y2 - y1,2));
+	b = sqrt(pow(x3 - x2, 2) + pow(y3 - y2,2));
+	c = sqrt(pow(x1 - x3, 2) + pow(y1 - y3,2));
+
+	// Показывает длинны сторон треугольника a b c
+	printf(" a = %.2f, b = %.2f, c = %.2f\n", a, b, c);
+	
+	
+	// нахождение периметра треугольника 
+	p = (a + b + c);
+	printf(" Perimeter (p) = %.2f", p);
+
+	return 0;
+}
