@@ -1,0 +1,39 @@
+//Добавление библиотек
+#include <stdio.h>
+#include <math.h>
+// Добавление переменных a b c
+int main() {
+		int a, b, c;
+		// Ввод с клавиатуры значений a b c
+	printf("Enter value a:");
+	while (!scanf_s("%d", &a)) {
+		printf("Enter value a:");
+		rewind(stdin);
+	}
+	printf("Enter value b:");
+	while (!scanf_s("%d", &b)) {
+		printf("Enter value b:");
+		rewind(stdin);
+	}
+	printf("Enter value c:");
+	while (!scanf_s("%d", &c)) {
+		printf("Enter value c:");
+		rewind(stdin);
+	}
+		
+		// Выводит значения a b c
+		printf(" a = %d, b = %d, c = %d\n", a, b, c);
+		// Условия выполнения алгоритма
+		if (a - b == b - c || c - a == a - b || b - c == c - a)
+		{
+			printf(" From arithmetic numbers %d, %d, %d, it is possible to make an arithmetic progression!\n", a, b, c);
+		}
+		else
+		{
+			printf(" From arithmetic numbers %d, %d, %d, impossible to make an arithmetic progression!\n", a, b, c); 
+		}
+		
+
+	
+	return 0;
+ }
