@@ -1,0 +1,42 @@
+// Добавление библиотек
+#include<stdio.h>
+#include<string.h>
+
+int main()
+// Добавление массива q, максимум которого равен 80 символов 
+{
+	char q[80];
+	//Ввод с клавиатуры значения q
+	printf(" Enter country name:\n");
+	scanf_s("%s", q);
+	/* Сравнения переменной q с названиями стран, если введённая с клавиатуры страна совпадёт с сравниваемой страной, то алгоритм выполнитя*/
+	if (strcmp(q, "Russia")==0)
+	{
+		printf("Russia is Eurasia");
+	}
+	else if (strcmp(q, "Australia") == 0)
+	{
+		printf("Australia is Australia");
+	}
+	else if (strcmp(q, "Canada") == 0)
+	{
+		printf("Canada is North America");
+	}
+	else if (strcmp(q, "Egypt") == 0)
+	{
+		printf("Egypt is Africa");
+	}
+	else if (strcmp(q, "Chile") == 0)
+	{
+		printf("Chile is South America");
+	}
+	else if (strcmp(q, "Belarus") == 0)
+	{
+		printf("Belarus is Eurasia");
+	}
+	else
+	{
+		printf("I don't know where it is.");
+	}
+	return 0;
+}
