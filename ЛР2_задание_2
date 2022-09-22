@@ -1,0 +1,25 @@
+//	Найти значение выражения(для натуральных m и n, m < n) : C = 1 / m + 1 / (m + 1) + ... + 1 / (m + n)
+#include <stdio.h>
+int main() {
+	float m, n, C=0;
+
+	//Вводим значение m с клавиатуры
+	printf("Enter value m:");
+	while (!scanf_s("%f", &m)) {
+		printf("Enter value m:");
+		rewind(stdin);
+	}
+	//Вводим значение n с клавиатуры
+	printf("Enter value n:");
+	while (!scanf_s("%f", &n)) {
+		printf("Enter value n:");
+		rewind(stdin);
+	}
+	//добавляем цикл for 
+	for (int i=m; i <= m+n;i++ ) {
+		C += 1./i;
+	}
+	// Выводим значение С
+	printf(" C = %f", C);
+	return 0;
+}
