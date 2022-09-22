@@ -1,0 +1,22 @@
+//Добавление директивы
+#include <stdio.h>
+int main()
+{// Добавление переменных
+	int N, f1 = 1, f2 = 1, f = 0, k = 2;
+	printf("Enter value N:");
+	//Ввод переменной с клавиатуры
+	while (!scanf_s("%d", &N)) {
+		printf("Enter value N:");
+		rewind(stdin);
+	}
+	//Добавление цикла while
+	while (f < N) {
+		++k;
+		f = f2 + f1;
+		f2 = f1;
+		f1 = f;
+	}
+	//Вывод значениея K
+	printf("The value of K is:%i\n", k);
+	return 0;
+}
