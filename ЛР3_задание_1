@@ -1,0 +1,110 @@
+#include<stdio.h>																																																																																																																																																																																																																																																									lude <stdio.h>
+#include <stdlib.h>  
+
+int main() {
+
+	//добавление массива и переменной количества элементов мвссива
+	int mas[100];
+	int n;
+	
+	//ввод с клавиатуры количество элементов массива 
+	printf(" Введите количество элементов массива: ");
+	while (!scanf_s("%d", &n) || n > 100 || n<0 || getchar() != '\n') {
+		printf(" Введите количество элементов массива: ");
+		rewind(stdin);
+	}
+
+    // выбор способа ввода элементов массива 
+	int flagok;
+	printf(" Если хотите ввести элементы массива вручную - нажмите 0,\n если хотите ввести случайные значения - нажмите не 0\n ");
+	while (!scanf_s("%d", &flagok)|| getchar() != '\n') {
+		printf(" Если хотите ввести элементы массива вручную - нажмите 0,\n если хотите ввести случайные значения - нажмите не 0\n");
+		rewind(stdin);
+	}
+	if (flagok == 0)
+	{
+		//ввод элементов в ручную
+		for (int i = 0; i < n; i++)
+		{
+			printf("%d элемент массива = ", i + 1);
+			while (!scanf_s("%d", &mas[i]) || getchar() != '\n') {
+				printf("%d элемент массива = ", i + 1);
+				rewind(stdin);
+				
+			}
+			
+		}
+	}
+	else {
+		// ввод элементов рандомно
+		srand(time(NULL));
+		for (int i = 0; i < n; i++) {
+			float znah_i = 0;
+			znah_i = (rand()% 200) - 100;
+			mas[i] = znah_i;
+			printf("%d элемент массива = %d\n", i + 1, mas[i]);
+		}
+	}
+	printf("___________________________________________________________\n");
+
+	// добавление переменных А и B и их индексов
+	//int A, B;
+	/*printf("\nEnter diapazon\n");
+	printf("Input beginning of the range:");
+	while (scanf_s("%d", &A) != 1 || getchar() != '\n') {
+		printf("Incorrect number \n");
+		printf("Please input number again:");
+		rewind(stdin);
+	}
+	// конечное значение диапазона
+	printf("Input end of the range(B > A):");
+	while (scanf_s("%d", &B) != 1 || getchar() != '\n' || B < A) {
+		printf("Incorrect number \n");
+		printf("Please input number again:");
+		rewind(stdin);
+	}*/
+	int A, B;
+	printf("Введите А:");
+	while (!scanf_s("%d", &A) || getchar() != '\n') {
+		printf(" Введите А: ");
+		rewind(stdin);
+	}
+	printf("Введите B (А<B):");
+	while (!scanf_s("%d", &B) || getchar() != '\n' || A > B) {
+		printf("Введите B (А<B): ");
+		rewind(stdin);
+	}
+
+	// нахождение символов в диапазоне
+	for (int i = 0; i < n; i++) {
+		if (A <= mas[i] && B >= mas[i]) {
+			flagok++;
+		}
+	}
+	printf(" Количество элементов между А и В: %d\n", flagok-1);
+	printf("___________________________________________________________\n");
+
+	int max = mas[100];
+	for (int i = 0; i < sizeof(mas) / 4; i++) {
+		if (mas[i] > max)
+			max = mas[i];
+	}
+	printf("Max элемент: %d\n", max);
+	printf("___________________________________________________________\n");
+
+	// определение индекса максимального элемента 
+	int sum = 0, index_max;
+	for (int i = 0; i < n; i++)
+		if (max == mas[i]) {
+			index_max = i+1;
+		}
+	printf("Индекс максимального элемента ммассива: %d\n", index_max);
+	printf("___________________________________________________________\n");
+
+	// нахождение суммы после максимального элемента 
+	for ( int i= index_max; i < n; i++)
+	sum += mas[i];
+	printf("Сумма элементов = %d\n", sum);
+	printf("___________________________________________________________\n\v");
+	return 0;
+}
