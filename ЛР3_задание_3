@@ -1,0 +1,87 @@
+#include<stdio.h>
+#include<time.h>
+int main() {
+
+	//добавление массива и переменной количества элементов мвссива
+	long mas[100];
+	long n;
+
+	//ввод с клавиатуры количество элементов массива 
+	printf(" Enter the number of array elements: ");
+	while (!scanf_s("%d", &n) || n > 100 || n < 0|| getchar() != '\n') {
+		printf(" Enter the number of array elements: ");
+		rewind(stdin);
+	}
+
+	// выбор способа ввода элементов массива 
+	int fl;
+	printf(" If you want to enter array elements manually - press 0,\n If you want to enter random values - press not 0\n");
+	while (!scanf_s("%d", &fl) || getchar() != '\n') {
+		printf("If you want to enter array elements manually - press 0,\n If you want to enter random values - press not 0\n");
+		rewind(stdin);
+	}
+	if (fl == 0)
+	{
+		//ввод элементов в ручную
+		for (int i = 0; i < n; i++)
+		{
+			printf("%d array element = ", i + 1);
+			while (!scanf_s("%d", &mas[i]) || getchar() != '\n') {
+				printf("%d array element = ", i + 1);
+				rewind(stdin);
+				
+			}
+		}
+	}
+
+	else {
+		// ввод элементов рандомно 
+		srand(time(NULL));
+		for (int i = 0; i < n; i++) {
+			float znah_i = 0;
+			znah_i = (rand() % 200) - 100;
+			mas[i] = znah_i;
+			printf("%d array element = %d\n", i + 1, mas[i]);
+		}
+	}
+
+	
+	printf("___________________________________________________________________________\n\t\v");
+	// определение нечётных элементов массива
+	for (int i = 0; i < n; i++) {
+		if (mas[i] % 2 == 0)
+			continue;
+		printf("%d array element is odd and is equal to: %d\n\t\v", i + 1, mas[i]);
+	}
+	printf("___________________________________________________________________________\n");
+	// опрежеление самого частого нечётного элемента
+	int povtor = 0, /* текущее количество повторений*/ naibolshee_povtor = 0, /*наибольшее количество повторений*/ element=0; // элемент который повторяется наибольшее количество раз
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i; j < n; j++)
+		{
+			if (mas[i] == mas[j] && mas[i] % 2 !=0)
+			{
+				povtor++;
+			}
+		}
+		if (povtor > naibolshee_povtor)
+		{
+			naibolshee_povtor = povtor;
+			element = mas[i];
+		}
+		if (povtor == naibolshee_povtor && povtor > 1)
+		{
+			element = mas[i];
+			printf("Several odd elements are repeated.\nOne of them: %d\n", element);
+			fl++;
+		}
+		povtor = 0;
+
+	}
+    if (naibolshee_povtor == 1)
+		printf("\nNo repeating odd element\n");
+	if (naibolshee_povtor != 1 && fl == 0)
+		printf("\nMost common odd number: %d\n", element);
+	return 0;
+}
