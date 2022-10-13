@@ -1,0 +1,72 @@
+//В массиве из n элементов удалить все элементы расположенные до первого минимального
+#include<stdio.h>
+int main() {
+
+	//добавление массива и переменной количества элементов мвссива
+	int mas[100];
+	int n;
+
+	//ввод с клавиатуры количество элементов массива 
+	printf(" Enter the number of array elements: ");
+	while (!scanf_s("%d", &n) || n > 100 || n < 0|| getchar() != '\n') {
+		printf(" Enter the number of array elements: ");
+		rewind(stdin);
+	}
+
+	// выбор способа ввода элементов массива 
+	int fl;
+	printf("If you want to enter array elements manually - press 0,\n If you want to enter random values - press not 0\n ");
+	while (!scanf_s("%d", &fl) || getchar() != '\n') {
+		printf(" If you want to enter array elements manually - press 0,\n If you want to enter random values - press not 0 \n");
+		rewind(stdin);
+	}
+	if (fl == 0)
+	{
+		//ввод элементов в ручную
+		for (int i = 0; i < n; i++)
+		{
+			printf("%d array element = ", i + 1);
+			while (!scanf_s("%d", &mas[i]) || getchar() != '\n') {
+				printf("%d array element = ", i + 1);
+				rewind(stdin);
+				
+			}
+		}
+	}
+	else {
+		// ввод элементов рандомно 
+		srand(time(NULL));
+		for (int i = 0; i < n; i++) {
+			float znah_i = 0;
+			znah_i = (rand() % 200)-100;
+			mas[i] = znah_i;
+			printf("%d array element = %d\n", i + 1, mas[i]);
+		}
+	}
+	printf("__________________________________________________\n\v");
+	//определение минимального элемента массива
+	int min = mas[0];
+	for (int i = 0; i < n; i++)
+		if (min > mas[i])
+			min = mas[i];
+	printf("Minimum array element = %d\n", min);
+	printf("__________________________________________________\n\v");
+	//определение индекса минемального члена массива
+	int index_min;
+	for (int i = 0; i < n; i++)
+		if (min == mas[i]) {
+			index_min = i + 1;
+		}
+	printf("Index of the minimum array element: %d\n", index_min);
+	printf("__________________________________________________\n\v");
+	//вычисление: какие элементы массива будут стоять после минемального элемента массива
+	int massssiv[100];
+	for (int i = 0; i < n - index_min; i++)
+    massssiv[i] = mas[index_min + i-1];
+	//вывод элементов массива которые стоят после минемального эллемента этого массива 
+	for (int i = 0; i < n-index_min; i++) 
+		printf("%d array element = %d\n", i + 1, massssiv[i]);
+	
+	printf("__________________________________________________\n\v");
+	return 0;
+}
