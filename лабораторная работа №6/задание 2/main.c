@@ -27,7 +27,6 @@ int main()
 	quickSortMatrix(array, row, col);
 	printf("\n\v Результат:\n");
 	printMatrix(row, col, array);
-	freeee(array, row, sumResults);
 	return 0;
 
 }
