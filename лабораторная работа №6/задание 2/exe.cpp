@@ -5,7 +5,7 @@
 #include<string.h>
 #include"Header.h"
 
-//размеры матрицы
+//размеры  
 void raz(int* x)
 {
 	while (!scanf_s("%d", x) || getchar() != '\n' || *x <= 0)
@@ -58,9 +58,7 @@ void printMatrix(int row, int col, int** arr)
 	}
 	printf("\n");
 }
-void freeee(int**& array, int row, int* sumResults) {
 
-}
 //заполнение памяти массива сумм
 int* arrayM2(int* sumResults, int col) {
 	sumResults = (int*)calloc(col, sizeof(int));
@@ -181,10 +179,4 @@ void quickSortMatrix(int**& arr, int row, int col)
 	sortArrQuick(arr, sort, row, col);
 	free(sort);
 }
-//очистка
-void freee(int**& array, int row, int* sumResults) {
-	for (int i = 0; i < row; i++) {
-		free(array[i]);
-	}
-	free(sumResults);
-}
+
